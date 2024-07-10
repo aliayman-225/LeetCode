@@ -41,6 +41,5 @@ class Solution {
                     break;
             }
             return temp->data;
-        }
-        
+        }     
 };
