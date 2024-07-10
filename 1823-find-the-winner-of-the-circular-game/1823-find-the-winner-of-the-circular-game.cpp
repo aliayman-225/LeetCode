@@ -12,6 +12,8 @@ class Node
 class Solution {
     public:
         int findTheWinner(int n, int k) {
+            if(k==1)
+                return n;
             Node* head =  new Node(1);
             Node* temp = head;
             for(int i=1;i<n;i++)
@@ -25,8 +27,6 @@ class Solution {
            
             for(int i=0;i<n;i++)
             {
-                if(k==1)
-                    return n;
                 int skip=1;
                 while(skip!=k)
                 {
