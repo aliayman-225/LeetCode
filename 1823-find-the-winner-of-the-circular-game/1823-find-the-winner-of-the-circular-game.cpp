@@ -3,7 +3,6 @@ class Node
     public:
         int data = 0; 
         Node* next = NULL; 
-        Node* prev = NULL;  
         Node(int user_data)
         {
             data = user_data; 
@@ -22,13 +21,12 @@ class Solution {
                 temp= new_node;
             }
             temp-> next = head;
-            head->prev=temp;
             temp = head;
            
             for(int i=0;i<n;i++)
             {
                 if(k==1)
-                    return head->prev->data;
+                    return n;
                 int skip=1;
                 while(skip!=k)
                 {
