@@ -10,9 +10,7 @@ public:
                 for(int j=i;j>=0;j--)
                 {
                     if(s[j]!='(' &&s[j]!=')')
-                    {
                         subString+=(s[j]);
-                    }
                     else if (s[j]!='(' && s[j]==')' && s[j-1]=='(')
                     {
                         newString.erase(j-1,2);
@@ -23,12 +21,10 @@ public:
                     {
                        subString+=(s[j-1]); 
                        j--;
-                    }
-                        
+                    } 
                     else{
                         newString.erase(j, subString.length()+2);
                         newString.insert(j,subString);
-                        cout<<subString<<" "<<newString;
                         break;
                     }
                 }
