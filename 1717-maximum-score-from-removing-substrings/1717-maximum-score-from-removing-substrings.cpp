@@ -1,22 +1,17 @@
 class Solution {
 public:
     int maximumGain(string s, int x, int y) {
-int maxPoints = 0;
-
-    // Determine the more valuable operation
+    int maxPoints = 0;
     if (x > y) {
-        // First remove all "ab" substrings
         stack<char> st;
-        for (char c : s) {
-            if (!st.empty() && st.top() == 'a' && c == 'b') {
+        for (int i=0;i<s.length();i++) {
+            if (!st.empty() && st.top() == 'a' && s[i] == 'b') {
                 st.pop();
                 maxPoints += x;
             } else {
-                st.push(c);
+                st.push(s[i]);
             }
         }
-
-        // Collect the remaining string
         string remaining;
         while (!st.empty()) {
             remaining += st.top();
@@ -24,28 +19,25 @@ int maxPoints = 0;
         }
         reverse(remaining.begin(), remaining.end());
 
-        // Now remove all "ba" substrings from the remaining string
-        for (char c : remaining) {
-            if (!st.empty() && st.top() == 'b' && c == 'a') {
+        for (int i=0;i<remaining.length();i++) {
+            if (!st.empty() && st.top() == 'b' && remaining[i] == 'a') {
                 st.pop();
                 maxPoints += y;
             } else {
-                st.push(c);
+                st.push(remaining[i]);
             }
         }
     } else {
-        // First remove all "ba" substrings
         stack<char> st;
-        for (char c : s) {
-            if (!st.empty() && st.top() == 'b' && c == 'a') {
+        for (int i=0;i<s.length();i++) {
+            if (!st.empty() && st.top() == 'b' && s[i] == 'a') {
                 st.pop();
                 maxPoints += y;
             } else {
-                st.push(c);
+                st.push(s[i]);
             }
         }
 
-        // Collect the remaining string
         string remaining;
         while (!st.empty()) {
             remaining += st.top();
@@ -53,13 +45,12 @@ int maxPoints = 0;
         }
         reverse(remaining.begin(), remaining.end());
 
-        // Now remove all "ab" substrings from the remaining string
-        for (char c : remaining) {
-            if (!st.empty() && st.top() == 'a' && c == 'b') {
+        for (int i=0;i<remaining.length();i++) {
+            if (!st.empty() && st.top() == 'a' && remaining[i] == 'b') {
                 st.pop();
                 maxPoints += x;
             } else {
-                st.push(c);
+                st.push(remaining[i]);
             }
         }
     }
